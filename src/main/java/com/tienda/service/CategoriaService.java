@@ -22,4 +22,27 @@ public class CategoriaService {
         return lista;
     
     }
+    
+    //se crean los metodos para un  CRUD Create Read Update Delete
+    @Transactional(readOnly=true)
+    public Categoria getCategoria(Categoria categoria){
+        categoria =
+                categoriaRepository.findById(categoria.getIdCategoria()).orElse(null);
+        
+        return categoria;
+    }
+    
+    @Transactional
+    public void delete(Categoria categoria){
+        //elimina el registro que tiene el id de categoria pasado en el objeto categoria
+        categoriaRepository.delete(categoria);
+
+    }
+    
+    @Transactional
+    public void save(Categoria categoria){
+        //si el idCategoria tiene un valor... se actualiza el registro de ese idcategoria
+        //si el idcategoria no tiene valor.. se inserta un registro con la informacion de la categoria
+        categoriaRepository.save(categoria);
+    }
 }

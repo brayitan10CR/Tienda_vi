@@ -83,3 +83,22 @@ nav {
     text-decoration: #33ffff;
     color: #33ffff;
 }
+
+.categoria-card {
+    position: relative;
+    width: 250px; /* Ajusta según tu necesidad */
+    height: 120px; /* Ajusta según tu necesidad */
+    background: url('/ruta/de/la/imagen.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px; /* Bordes redondeados opcionales */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoria-overlay {
+    background: rgba(255, 255, 255, 0.6); /* Fondo semitransparente */
+    padding: 10px 20px;
+    border-radius: 10px;
+}

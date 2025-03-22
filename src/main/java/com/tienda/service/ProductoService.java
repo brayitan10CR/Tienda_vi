@@ -69,4 +69,11 @@ public class ProductoService {
 
         return productoRepository.consultaSQL(precioInf, precioSup);
     }
+    
+    //se crean los metodos para un  CRUD Create Read Update Delete
+    @Transactional(readOnly=true)
+    public List<Producto> consultaJPQLdescripcion(String descripcion){
+
+        return productoRepository.consultaJPQLdescripcion(descripcion);
+    }
 }

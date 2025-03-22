@@ -32,5 +32,11 @@ public interface ProductoRepository
     public List<Producto> consultaSQL(
             double precioInf,
             double precioSup);
+    
+    
+    //Consulta JPQL
+    @Query(value="SELECT a FROM Producto a WHERE a.descripcion LIKE %:descripcion% ORDER BY a.descripcion")
+     public List<Producto> consultaJPQLdescripcion(
+            String descripcion);
 
 }

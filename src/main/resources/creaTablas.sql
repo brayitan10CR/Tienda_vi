@@ -208,6 +208,7 @@ INSERT INTO ruta_permit (patron) VALUES
 ('/carrito/**'),
 ('/registro/**'),
 ('/js/**'),
+('/fav/**'),
 ('/webjars/**');
 
 CREATE TABLE constante (

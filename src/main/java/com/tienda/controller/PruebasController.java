@@ -88,4 +88,14 @@ public class PruebasController {
         return "/pruebas/listado2";
     }
 
+    @PostMapping("/query4")
+    public String query4(@RequestParam("descripcion") String descripcion,
+            Model model) {
+        var lista = productoService.consultaJPQLdescripcion(descripcion);
+        model.addAttribute("productos", lista);
+        model.addAttribute("descripcion", descripcion);
+
+        return "/pruebas/listado2";
+    }
+
 }

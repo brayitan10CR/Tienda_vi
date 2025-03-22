@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Techshop</title>
         <meta charset="UTF-8"/>        
@@ -35,7 +36,7 @@
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
                             <h5 class="modal-title">[[#{producto.agregar}]]</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <form th:action="@{/producto/guardar}" th:object="${producto}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
@@ -106,7 +107,7 @@
                                         <th>[[#{producto.imagen}]]</th>
                                         <th>[[#{producto.activo}]]</th>
                                         <th>[[#{producto.categoria}]]</th>
-                                        <th></th>
+                                        <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -120,7 +121,7 @@
                                         <td><img th:src="@{${p.rutaImagen}}" alt="no data" height="75"/></td>                                            
                                         <td th:text="${p.activo} ? 'Activa' : 'Inactiva'" />
                                         <td>[[${p.categoria.descripcion}]]</td>
-                                        <td><a th:href="@{/producto/eliminar/}+${p.idProducto}"
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/producto/eliminar/}+${p.idProducto}"
                                                class="btn btn-danger">
                                                 <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                             <a th:href="@{/producto/modificar/}+${p.idProducto}"
